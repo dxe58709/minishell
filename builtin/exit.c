@@ -6,9 +6,14 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:04 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/09 20:18:14 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:26:09 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
+int	exit_command(char **argv)
+{
+	exit(0);
+	return (EXIT_SUCCESS);
+}

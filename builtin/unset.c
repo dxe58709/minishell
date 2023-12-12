@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: N <nsakanou@student.42tokyo.jp>            +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/11 17:53:10 by N                ###   ########.fr       */
+/*   Updated: 2023/12/12 18:27:17 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ bashで定義した変数や関数を削除するコマンド [unset 変数名] 
 １ 英字（大文字または小文字）、数字、およびアンダースコア _ 
 	ただし、最初の文字は数字ではない.
 2 大文字と小文字を区別 ex)PATH と Path は異なる環境変数
+
+同じ名前の関数と変数があった場合、変数を削除
 */
 
 #include "builtin.h"
@@ -48,8 +50,9 @@ int	del_env_value(const char *name)
 		return (EXIT_FAILURE);
 	}
 	else
-		
+
 }
+
 int	unset_command(char **argv)
 {
 	size_t	i;
@@ -61,10 +64,7 @@ int	unset_command(char **argv)
 		if (env_name_judge(argv[i]) == true)
 			del_env_value(argv[i]);//環境変数を削除
 		else
-		{
-			perror("error");
-			return (EXIT_FAILURE);
-		}
+			ft_error();
 		i++;
 	}
 	return (EXIT_SUCCESS);

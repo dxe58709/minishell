@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:50 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/09 21:54:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:04:49 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	echo_command(char **argv)
 {
 	size_t	i;
 
-	i = 2;//argv=２から(argv1はecho）
-	if (option_n(argv[2]) == true)//オプションありの時argv=3から(argv1はecho, argv2は-n）
-		i = 3;
+	i = 1;
+	if (option_n(argv[1]) == true)
+		i = 2;
 	while (argv[i])
 	{
 		printf("%s", argv[i]);
@@ -33,16 +33,16 @@ int	echo_command(char **argv)
 			printf(" ");
 	i++;
 	}
-	if (option_n(argv[2]) == false)//オプション無し
+	if (option_n(argv[1]) == false)//オプション無し
 		printf("\n");
 	return (EXIT_SUCCESS);
 }
 
 /*
-オプション無し echo 1 2 3
+echo 1 2 3 オプション無し
 1 2 3
 %
-オプションあり echo -n 1 2 3
+echo -n 1 2 3 オプションあり
 1 2 3%
 
 終了ステータスは0,1ではなくEXIT_SUCCESS,EXIT_FAILURE
