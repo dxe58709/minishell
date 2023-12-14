@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 17:02:17 by N                 #+#    #+#              #
-#    Updated: 2023/12/14 16:21:39 by nsakanou         ###   ########.fr        #
+#    Updated: 2023/12/14 19:47:32 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,11 @@ RM = rm -f
 SRCS =	builtin/exit.c \
 	builtin/pwd.c \
 	builtin/cd.c \
+	builtin/built_utils.c \
 	builtin/echo.c
 
 #	builtin/unset.c \
+	builtin/builtin.c \
 	builtin/env.c \
 	builtin/export.c \
 s

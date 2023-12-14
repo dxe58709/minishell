@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/14 16:21:57 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:00:56 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	change_cur_dir(const char *path)
 
 int	cd_command(char **argv)
 {
+	check_file_permission(argv[1]);//argv[1]??
 	if (!argv[1]) // 引数ないときホームディレクトリ移動
 		cd_home();
 	if (chdir(argv[1]) != 0)
@@ -123,10 +124,10 @@ int	cd_command(char **argv)
 //     str[2] = NULL;
 
 // 	cd_command(str);
-	
+
 // 	printf("pwd\n");
 // 	cur_dir = getcwd(NULL, 0); // 現在のdirectory
 // 	printf("pwd %s\n", cur_dir);
-	
+
 // 	return 0;
 // }
