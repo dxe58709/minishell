@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/12 20:11:16 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:21:57 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,6 @@ cd 引数無し→homeディレクトリに移動
 */
 
 #include "builtin.h"
-
-// int ft_strncmp(const char *s1, const char *s2, unsigned int n)
-// {
-// 	int do_;
-
-// 	do_ = 1;
-// 	if (n == 0)
-// 		return (0);
-// 	while (n-- || do_)
-// 	{
-// 		do_ = 0;
-// 		if (*s1 != *s2++)
-// 			return (*(unsigned char *)s1 - *(unsigned char *)(s2 - 1));
-// 		if (*s1 == 0)
-// 			break;
-// 		s1++;
-// 	}
-// 	return (0);
-// }
 
 bool	sarch_path(char **argv)
 {
@@ -131,21 +112,21 @@ int	cd_command(char **argv)
 	return (EXIT_SUCCESS);
 }
 
-int main(int ac, char **av)
-{
-	char *cur_dir;
-	char *str[3];
+// int main(int ac, char **av)
+// {
+// 	char *cur_dir;
+// 	char *str[3];
 
-	printf("cd \n");
-    str[0] = av[1];
-    str[1] = av[2];
-    str[2] = NULL;
+// 	printf("cd \n");
+//     str[0] = av[1];
+//     str[1] = av[2];
+//     str[2] = NULL;
 
-	cd_command(str);
+// 	cd_command(str);
 	
-	printf("pwd\n");
-	cur_dir = getcwd(NULL, 0); // 現在のdirectory
-	printf("pwd %s\n", cur_dir);
+// 	printf("pwd\n");
+// 	cur_dir = getcwd(NULL, 0); // 現在のdirectory
+// 	printf("pwd %s\n", cur_dir);
 	
-	return 0;
-}
+// 	return 0;
+// }
