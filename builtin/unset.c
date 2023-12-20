@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/14 16:20:22 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:44:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,6 @@ bashで定義した変数や関数を削除するコマンド [unset 変数名] 
 */
 
 #include "builtin.h"
-
-bool	env_name_judge(char *name)
-{
-	size_t	i;
-
-	i = 0;
-	if (!ft_isalpha(name[i]) && name[i] != '_')
-		return (false);
-	i++;
-	while (name[i])
-	{
-		if (!ft_isalnum(name[i]) && name[i] != '_')
-			return (false);
-		i++;
-	}
-	return (true);
-}
 
 int	del_env_value(const char *name)
 {
