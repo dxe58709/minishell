@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:04 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/14 20:19:46 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:13:34 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,31 +141,31 @@ bash-3.2$ echo $?
 258
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-# include <stdbool.h>
-# include <string.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <errno.h>
-# include <ctype.h>
-# include "libft.h"
+// #include <stdio.h>
+// #include <stdlib.h>
+// # include <stdbool.h>
+// # include <string.h>
+// # include <stdio.h>
+// # include <stdlib.h>
+// # include <unistd.h>
+// # include <limits.h>
+// # include <errno.h>
+// # include <ctype.h>
+// # include "libft.h"
 
-extern int exit_command(char **argv);
+// extern int exit_command(char **argv);
 
-int main(int argc, char **argv)
-{
-    if (argc < 2)
-    {
-        fprintf(stderr, "Usage: %s <exit_code>\n", argv[0]);
-        return 1;
+// int main(int argc, char **argv)
+// {
+//     if (argc < 2)
+//     {
+//         fprintf(stderr, "Usage: %s <exit_code>\n", argv[0]);
+//         return 1;
 
-    char *exit_argv[] = {argv[0], argv[1], NULL};
-    exit_command(exit_argv);
+//     char *exit_argv[] = {argv[0], argv[1], NULL};
+//     exit_command(exit_argv);
 
-    printf("This line will not be reached if exit_command works correctly.\n");
-	}
-	return 0;
-}
+//     printf("This line will not be reached if exit_command works correctly.\n");
+// 	}
+// 	return 0;
+// }

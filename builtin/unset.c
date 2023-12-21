@@ -6,11 +6,20 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/20 14:44:38 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:55:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
+test1=123
+echo $test1
+123
+unset teset1
+echo $test1
+
+↑削除されたことが確認できる
+
+
 bashで定義した変数や関数を削除するコマンド [unset 変数名] 環境変数を削除
 環境変数の識別子
 １ 英字（大文字または小文字）、数字、およびアンダースコア _ 
@@ -22,33 +31,39 @@ bashで定義した変数や関数を削除するコマンド [unset 変数名] 
 
 #include "builtin.h"
 
-int	del_env_value(const char *name)
-{
-	char	*value;
-
-	value = getenv(name);
-	if (value == NULL)// 指定された環境変数が存在しない場合
-	{
-		perror("no env");
-		return (EXIT_FAILURE);
-	}
-	else
-
-}
-
-int	unset_command(char **argv)
+int	unset_command(char **argv, t_env *env)
 {
 	size_t	i;
 
 	i = 1;
-
 	while (argv[i])
 	{
 		if (env_name_judge(argv[i]) == true)
-			del_env_value(argv[i]);//環境変数を削除
+			env_del(&env, argv[i]);//環境変数を削除
 		else
-			ft_error();
+			strerror(errno);//exitはしない
 		i++;
 	}
 	return (EXIT_SUCCESS);
 }
+
+/*
+bash-3.2$ export a=gggggggggggggggggggggg
+bash-3.2$ export b=zzzzzzzzzzzzzzzzz
+
+bash-3.2$ unset a 2 = b 2
+bash: unset: `2': not a valid identifier
+bash: unset: `=': not a valid identifier
+bash: unset: `2': not a valid identifier
+
+bash-3.2$ env | grep zzzzzzzzzzzzzzzzz
+bash-3.2$ export b=zzzzzzzzzzzzzzzzz
+bash-3.2$ env | grep zzzzzzzzzzzzzzzzz
+b=zzzzzzzzzzzzzzzzz
+bash-3.2$ unset a 2 = b 2
+bash: unset: `2': not a valid identifier
+bash: unset: `=': not a valid identifier
+bash: unset: `2': not a valid identifier
+bash-3.2$ echo $?
+1
+*/
