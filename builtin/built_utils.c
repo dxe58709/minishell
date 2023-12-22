@@ -6,16 +6,11 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:11:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/21 17:42:55 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:03:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-
-char	*search_env(const char *env_name)
-{
-	return (getenv(env_name));
-}
 
 void	ft_error(void)
 {

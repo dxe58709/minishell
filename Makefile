@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 14:09:43 by nsakanou          #+#    #+#              #
-#    Updated: 2023/12/21 20:56:15 by nsakanou         ###   ########.fr        #
+#    Updated: 2023/12/22 17:14:55 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,17 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(LIBDIR)
 RM = rm -f
 
-SRCS =	builtin/exit.c \
-	builtin/pwd.c \
-	builtin/cd.c \
-	builtin/built_utils.c \
-	builtin/echo.c \
-	builtin/env.c \
-	builtin/unset.c \
-	builtin/env_utils.c
+SRCS =	builtin/built_utils.c \
+		builtin/builtin.c \
+		builtin/cd.c \
+		builtin/echo.c \
+		builtin/env.c \
+		builtin/env_utils.c \
+		builtin/exit.c \
+		builtin/export.c \
+		builtin/pwd.c \
+		builtin/unset.c
 
-#	builtin/builtin.c \
-	builtin/export.c \
-s
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)

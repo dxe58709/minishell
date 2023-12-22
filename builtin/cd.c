@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/20 14:42:49 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:02:12 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	cd_home(void)
 {
 	char	*home_dir;
 
-	home_dir = search_env("HOME");
+	home_dir = getenv("HOME");
 	if (home_dir && chdir(home_dir) == 0) // ディレクトリの移動成功
 		return ;
 	else

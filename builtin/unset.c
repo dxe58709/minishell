@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/21 20:55:44 by nsakanou         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:42:07 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	unset_command(char **argv, t_env *env)
 	while (argv[i])
 	{
 		if (env_name_judge(argv[i]) == true)
-			env_del(&env, argv[i]);//環境変数を削除
+			env_del(&env, argv[i]);
 		else
-			strerror(errno);//exitはしない
+			strerror(errno);
 		i++;
 	}
 	return (EXIT_SUCCESS);
