@@ -6,11 +6,19 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:50 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/14 19:01:01 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/04 20:38:37 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+//#include "builtin.h"
+# include <stdbool.h>
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <errno.h>
+# include <ctype.h>
 
 bool	option_n(char *str)
 {
@@ -45,7 +53,6 @@ echo 1 2 3 オプション無し
 echo -n 1 2 3 オプションあり
 1 2 3%
 
-これの処理まだやってない
 echo -n-n-n-n 1 2 3 オプションなし
 -n-n-n-n 1 2 3
 %
@@ -58,13 +65,14 @@ echo -n -n -n -n 1 2 3 オプションあり
 
 終了ステータスは0,1ではなくEXIT_SUCCESS,EXIT_FAILURE
 */
+/*
+ int main(int argc, char **argv) {
+     if (argc >= 2) {
+         echo_command(argv);
+     } else {
+         printf("Usage: %s <args>\n", argv[0]);
+     }
 
-// int main(int argc, char **argv) {
-//     if (argc >= 2) {
-//         echo_command(argv);
-//     } else {
-//         printf("Usage: %s <args>\n", argv[0]);
-//     }
-
-//     return EXIT_SUCCESS;
-// }
+     return EXIT_SUCCESS;
+ }
+ */
