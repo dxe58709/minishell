@@ -6,19 +6,11 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:50 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/04 20:38:37 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/04 20:41:10 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtin.h"
-# include <stdbool.h>
-# include <string.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <errno.h>
-# include <ctype.h>
+#include "builtin.h"
 
 bool	option_n(char *str)
 {
