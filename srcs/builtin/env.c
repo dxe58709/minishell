@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: N <nsakanou@student.42tokyo.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2023/12/22 17:19:47 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:44:28 by N                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,21 @@ t_env	*env_create(char **envp)
 	return (env_list);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(int argc, char *argv[], char *envp[])
-{
-	(void)argc;
-	(void)argv;
-    // env_command 関数を呼び出して環境変数のリストを出力
-	t_env	*env_list;
+// int main(int argc, char *argv[], char *envp[])
+// {
+// 	(void)argc;
+// 	(void)argv;
+//     // env_command 関数を呼び出して環境変数のリストを出力
+// 	t_env	*env_list;
 	
-	env_list = env_create(envp);
-	unset_command(argv, env_list);
-    env_list_print(env_list);
+// 	env_list = env_create(envp);
+// 	unset_command(argv, env_list);
+//     env_list_print(env_list);
 
-    return 0;
-}
+//     return 0;
+// }
 
 //envpをリストに入れる（create_env）
 //第三引数でenvpが渡される
