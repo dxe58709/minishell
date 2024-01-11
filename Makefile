@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 14:09:43 by nsakanou          #+#    #+#              #
-#    Updated: 2023/12/22 17:14:55 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/11 15:52:41 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,22 @@ NAME = minishell
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
+INCLUDES = -I ./includes -I $(LIBDIR)
+
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBDIR)
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 RM = rm -f
 
-SRCS =	builtin/built_utils.c \
-		builtin/builtin.c \
-		builtin/cd.c \
-		builtin/echo.c \
-		builtin/env.c \
-		builtin/env_utils.c \
-		builtin/exit.c \
-		builtin/export.c \
-		builtin/pwd.c \
-		builtin/unset.c
+SRCS =srcs/builtin/built_utils.c \
+	srcs/builtin/builtin.c \
+	srcs/builtin/cd.c \
+	srcs/builtin/echo.c \
+	srcs/builtin/env.c \
+	srcs/builtin/env_utils.c \
+	srcs/builtin/exit.c \
+	srcs/builtin/export.c \
+	srcs/builtin/pwd.c \
+	srcs/builtin/unset.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
