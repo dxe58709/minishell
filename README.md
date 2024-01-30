@@ -22,7 +22,6 @@ make
 To run the program:
 
 ```shell
-#!/bin/zsh
 ./minishell
 ```
 A prompt will appear. You may enter your commands to be executed.
