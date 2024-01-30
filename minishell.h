@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:43:26 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/05 15:24:30 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:33:25 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "lib/libft/libft.h"
 # include "lib/ft_printf/ft_printf.h"
+# include "lib/ft_eprintf/ft_eprintf.h"
 
 int	g_signal;
 
@@ -31,14 +33,12 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-void	dms_putenv(char **chain);
 void	dms_putchain(t_token *chain);
+void	dms_putenv(void);
+char	**dms_lxrtochar2(t_token *chain);
 
-char	**ms_envadd(char *new);
-char	**ms_envget(void);
-char	**ms_envinit(char **envp);
 void	ms_setsignal(void);
-void	ms_isctrld(char *stdin, char **env);
+void	ms_isctrld(char *stdin);
 t_token	*ms_token_add(t_token *chain, t_token *new);
 t_token	*ms_token_free(t_token *chain);
 t_token	*ms_token_last(t_token *chain);

@@ -6,27 +6,27 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:11:27 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:00:46 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:53:47 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
-int	exec_builtin(char **argv, t_env *env)
+int	exec_builtin(char **argv)
 {
-	if (ft_strcmp(argv[0], "echo") == 0)
-		return (echo_command(argv));
-	else if (ft_strcmp(argv[0], "cd") == 0)
-		return (cd_command(argv));
-	else if (ft_strcmp(argv[0], "pwd") == 0)
-		return (pwd_command());
-	else if (ft_strcmp(argv[0], "export") == 0)//*env
-		return (export_command(argv, env));
-	else if (ft_strcmp(argv[0], "unset") == 0)
-		return (unset_command(argv, env));
-	// else if (ft_strcmp(argv[0], "env") == 0)//*env
-	// 	return (env_command());
-	else if (ft_strcmp(argv[0], "exit") == 0)
-		return (exit_command(argv));
-	return (EXIT_FAILURE);
+	if (ft_memcmp(argv[0], "echo", 5) == 0)
+		echo_command(argv);
+	else if (ft_memcmp(argv[0], "cd", 3) == 0)
+		cd_command(argv);
+	else if (ft_memcmp(argv[0], "pwd", 4) == 0)
+		pwd_command(NULL);
+	else if (ft_memcmp(argv[0], "unset", 6) == 0)
+		unset_command(argv);
+	else if (ft_memcmp(argv[0], "export", 7) == 0)
+		export_command(argv);
+	else if (ft_memcmp(argv[0], "env", 4) == 0)
+		env_command();
+	else if (ft_memcmp(argv[0], "exit", 5) == 0)
+		exit_command(argv);
+	return (256);
 }

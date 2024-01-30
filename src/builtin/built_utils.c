@@ -6,19 +6,25 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:11:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 16:58:59 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:17:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
-void	ft_error(void)
+int	cd_error(void)
 {
-	strerror(errno);
+	ft_eprintf("No such file or directory.\n");
+	return (EXIT_FAILURE);
+}
+
+void	list_error(void)
+{
+	ft_eprintf("List not found.\n");
 	exit(EXIT_FAILURE);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 

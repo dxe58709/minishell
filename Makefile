@@ -3,62 +3,83 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/11 16:57:27 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/17 21:36:39 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= minishell
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-SRCS	= src/builtin/built_utils.c \
-	src/builtin/builtin.c \
-	src/builtin/cd.c \
-	src/builtin/echo.c \
-	src/builtin/env.c \
-	src/builtin/env_utils.c \
-	src/builtin/exit.c \
-	src/builtin/export.c \
-	src/builtin/pwd.c \
-	src/builtin/unset.c \
-	src/dms_env.c \
-	src/dms_token.c \
-	src/lexer/lxr_lexer.c \
-	src/lexer/lxr_pipe.c \
-	src/lexer/lxr_redirect.c \
-	src/lexer/lxr_semicolon.c \
-	src/lexer/lxr_token.c \
-	src/main.c \
-	src/ms_env.c \
-	src/ms_signal.c \
-	src/ms_token.c 
-	#src/pipex.c \
-	
+SRCS	= ./src/ms_token.c \
+		  ./src/ms_signal.c \
+		  ./src/main.c \
+		  ./src/lexer/lxr_pipe.c \
+		  ./src/lexer/lxr_token.c \
+		  ./src/lexer/lxr_semicolon.c \
+		  ./src/lexer/lxr_redirect.c \
+		  ./src/lexer/lxr_lexer.c \
+		  ./src/dms_token.c \
+		  ./src/dms_lxrtochar2.c \
+		  ./src/dms_env.c \
+		  ./src/builtin/pwd.c \
+		  ./src/builtin/export.c \
+		  ./src/builtin/export_utils.c \
+		  ./src/builtin/export_utils2.c \
+		  ./src/builtin/exit.c \
+		  ./src/builtin/env_utils.c \
+		  ./src/builtin/env_store.c \
+		  ./src/builtin/env.c \
+		  ./src/builtin/echo.c \
+		  ./src/builtin/cd.c \
+		  ./src/builtin/unset.c \
+		  ./src/builtin/builtin.c \
+		  ./src/builtin/built_utils.c
+
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
-RLFLAGS	= -lreadline -L$(RLDIR)/lib
+EPRINTF	= fteprintf.a
+RLFLAGS	=  -L$(RLDIR)/lib -lreadline
 INCLUDE	= -I./ -I./src -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(INCLUDE) $(CFLAGS) $(RLFLAGS) $^ -o $@
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(EPRINTF)
+	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDE) $(RLFLAGS)
 
 $(LIBFT):
-		cd lib && cd libft && make all && cp $@ ../../ && make fclean;
+		cd lib          && \
+		cd libft        && \
+		make all        && \
+		cp $@ ../../    && \
+		make fclean
 
 $(PRINTF):
-		cd lib && cd ft_printf && make all && cp $@ ../../ && make fclean;
+		cd lib          && \
+		cd ft_printf    && \
+		make all        && \
+		cp $@ ../../    && \
+		make fclean
 
-all: $(NAME)
+$(EPRINTF):
+		cd lib          && \
+		cd ft_eprintf    && \
+		make all        && \
+		cp $@ ../../    && \
+		make fclean
+
+readline:
+	brew install readline
+
+all: readline $(NAME)
 
 clean:
-	rm -rf $(OBJS) $(LIBFT) $(PRINTF)
+	rm -rf $(OBJS) $(LIBFT) $(PRINTF) $(EPRINTF)
 
 fclean: clean
 	rm -f $(NAME)

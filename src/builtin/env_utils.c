@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:01:01 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:04:26 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ bool	env_name_judge(char *name)
 	size_t	i;
 
 	i = 0;
-	if (!ft_isalpha(name[i]) && name[i] != '_')
+	if (!(ft_isalpha(name[i]) || name[i] == '_'))
 		return (false);
 	i++;
-	while (name[i])
+	while (name[i] && !((name[i] == '=') || \
+		(name[i] == '+' && name[i + 1] == '=')))
 	{
 		if (!ft_isalnum(name[i]) && name[i] != '_')
 			return (false);
@@ -29,14 +30,13 @@ bool	env_name_judge(char *name)
 	return (true);
 }
 
-// 環境変数の削除
-void	env_del(t_env **env_list, char *name)
+t_env	*env_del(t_env **env_list, char *name)
 {
 	t_env	*prev;
 	t_env	*current;
 
 	prev = NULL;
-	current = *env_list;
+	current = (*env_list)->next;
 	while (current)
 	{
 		if (ft_strcmp(current->name, name) == 0)
@@ -48,28 +48,26 @@ void	env_del(t_env **env_list, char *name)
 			free(current->name);
 			free(current->value);
 			free(current);
-			return ;
+			return (*env_list);
 		}
 		prev = current;
 		current = current->next;
 	}
-	return ;
+	return (*env_list);
 }
 
-// 環境変数の更新
-// 指定された名前の環境変数が存在すればその値を更新し、存在しなければ新しい環境変数として追加
-void	env_update(t_env **env_list, char *name, char *value)
+void	*env_update(char *name, char *value)
 {
 	t_env	*current;
+	t_env	**env_list;
 
+	env_list = env_store();
 	current = env_search(*env_list, name);
 	if (current)
-	{
-		free(current->value);
 		current->value = ft_strdup(value);
-	}
 	else
-		env_create((char **)env_list);
+		env_list_add(env_list, name, value);
+	return (env_list);
 }
 
 t_env	*lstlast(t_env *lst)
@@ -77,6 +75,7 @@ t_env	*lstlast(t_env *lst)
 	int	i;
 
 	i = 0;
+	(void)i;
 	while (lst && lst->next)
 	{
 		i++;

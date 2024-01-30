@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 16:12:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:09:35 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
    ./pipex infile "grep a1" "wc -w" outfile
    < infile grep a1 | wc -w > outfile
 
-   command1 | command2 の形式のコマンドでは、command1 の出力が command2 の入力に渡され、これにより複数のプロセスが連携してデータを処理
+   command1 | command2 の形式のコマンドでは、command1 の出力が command2 の入力に渡され、
+	 これにより複数のプロセスが連携してデータを処理
  */
 
 /*
@@ -44,38 +45,7 @@ pipe システムコールを使用して生成。
 close_pipe
 */
 
-//成功した場合には新しいパイプが生成され、そのファイルディスクリプタが t_pipe 構造体に格納される。
-void  create_pipe(t_pipe *pipe)
+void	create_pipe(t_pipe *pipe)
 {
-  if (pipe(pipe->pipe_fd) == -1)
-    ft_error();
+
 }
-
-void  close_pipe(t_pipe *pipe)
-{
-  close(pipe->pipe_fd[0]);
-  close(pipe->pipe_fd[1]);
-}
-
-int read_pipe(t_pipe *pipe, void *buf, size_t size)
-{
-  close(pipe->pipe_fd[1]);//書き込み側をクローズ
-                          
-  ssize_t bytes_read;//負の値も含む
-  bytes_read = read(pipe->pipe_fd[0], buf, size);
-  if (byte_read == -1)
-    ft_error();
-  return (bytes_read);
-}
-
-void  write_pipe(t_pipe *pipe, void *buf, size_t size)
-{
-  close(pipe->pipe_fd[0]);//読み取り側をクローズ
-                          
-  ssize_t bytes_write;
-  bytes_write = write(pipe->pipe_fd[1], buf, size);
-  if (bytes_write == -1)
-    ft_error();
-}
-
-
