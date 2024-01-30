@@ -55,4 +55,4 @@ Minishell is a miniature shell program based on Bash. Minishell supports:
 
 However, Minishell does not support `\`, `;`, `&&`, `||`, or wildcards.<br>
 
-Made by yususato and nsakanou
+Made by yushsato and nsakanou
