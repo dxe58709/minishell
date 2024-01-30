@@ -11,7 +11,8 @@ It implements redirections and pipes, as well as environment variable expansions
 First, clone this repository and `cd` into it:
 
 ```zsh
-$ git clone https://github.com/dxe58709/minishell; cd minishell
+#!/bin/zsh
+git clone https://github.com/dxe58709/minishell; cd minishell
 ```
 Compile using `make`:
 ```
@@ -21,6 +22,7 @@ make
 To run the program:
 
 ```shell
+#!/bin/zsh
 ./minishell
 ```
 A prompt will appear. You may enter your commands to be executed.
